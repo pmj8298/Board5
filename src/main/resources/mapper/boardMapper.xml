@@ -13,4 +13,19 @@
  ORDER BY BNO DESC
   </select>
   
+  <insert id="insertBoard">
+  INSERT INTO BOARD(
+    BNO,
+	TITLE,
+	CONTENT,
+	WRITER
+  )
+  VALUES(
+   (SELECT NVL(MAX(BNO),0)+1 FROM BOARD),
+     #{title},
+     #{content},
+     #{writer}
+  )
+  
+  </insert>
 </mapper>

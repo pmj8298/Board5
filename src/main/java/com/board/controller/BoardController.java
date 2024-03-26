@@ -43,4 +43,25 @@ public class BoardController {
 		mv.setViewName("/board/list");
 		return mv;
 	}
+	
+		// /Board/WriteForm
+	@RequestMapping("/WriteForm")
+	public ModelAndView writeForm() {
+		
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("board/write");
+		return mv;
+	}
+	
+	@RequestMapping("/Write")
+	public ModelAndView write(MenuVo menuVo) {
+		
+		
+		boardMapper.insertBoard(menuVo);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:/Board/List");
+		return mv;
+	}
 }
