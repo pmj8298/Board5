@@ -20,16 +20,28 @@
  h2{
  margin: 20px 0px;
  }
- 
-#menu   {width: 800px; margin: 30px 0;}
 
-#menu td{text-align: center;
-padding: 15px 10px;
-background-color: black;
-color: white;
-font-weight: bold;
-border: 2px solid silver;
-}
+#menu    { 
+     width  : 800px;
+     margin : 30px 0;
+     
+     td { 
+	     text-align : center; 
+	     padding : 15px 10px;
+	     background-color :  #666;
+	     color  : white;
+	     font-weight: bold;
+	     border :1px solid silver;
+	     
+	  &:hover  {
+	     background-color : #c0c0c0 ;
+	     color  : white;
+	  }
+	  a{ 
+	  text-decoration: none;
+	  width: 100%;
+	  display: block;
+	  color: white;}
+	  }  
 
-#menu td:hover{background-color: white;
-color: black;}
+  }
