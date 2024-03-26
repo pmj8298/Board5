@@ -11,6 +11,9 @@ import com.board.domain.BoardVo;
 import com.board.mapper.BoardMapper;
 import com.board.menus.domain.MenuVo;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @RequestMapping("/Board")
 public class BoardController {
@@ -21,6 +24,7 @@ public class BoardController {
 		// /Board/List?menu_id=MENU01
 	@RequestMapping("/List")
 	public ModelAndView list(MenuVo menuVo) {
+		log.info("menuVo : {}", menuVo);
 		
 		// 게시물 목록
 		List<BoardVo> boardList = boardMapper.getBoardList(menuVo); 
@@ -28,7 +32,7 @@ public class BoardController {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("boardList", boardList);
-		mv.setViewName("/Board/list");
+		mv.setViewName("/board/list");
 		return mv;
 	}
 }

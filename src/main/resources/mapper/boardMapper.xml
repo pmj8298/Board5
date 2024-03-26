@@ -5,11 +5,11 @@
   SELECT  BNO,
           MENU_ID,
 		  TITLE,
-		  CONTENT,
 		  WRITER,
-		  REGDATE,
+		  TO_CHAR(REGDATE,'YYYY-MM-DD')REGDATE,
 		  HIT
   FROM    BOARD
+ WHERE    MENU_ID = #{menu_id}
  ORDER BY BNO DESC
   </select>
   
