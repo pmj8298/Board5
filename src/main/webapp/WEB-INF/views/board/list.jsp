@@ -11,38 +11,42 @@
 <script src="https://cdn.jsdelivr.net/npm/browser-scss@1.0.3/dist/browser-scss.min.js"></script>
 
 <style>
-td{padding: 10px;
-text-align: center;}
 
-td:nth-of-type(1){width: 90px}
-td:nth-of-type(2){width: 340px; text-align: left;}
-td:nth-of-type(3){width: 110px}
-td:nth-of-type(4){width: 110px}
-td:nth-of-type(5){width: 100px}
 
-tr:first-child>td{text-align: center;}
-
-/*scss문법적용
-https://www.jsdelivr.com/package/npm/browser-scss
-*/
-tr:first-child{
-background-color: black;
-color:white;
-font-weight: bold;
-td{
-border-color: pink;
- }
+#table{
+	td{padding: 10px;
+	text-align: center;}
+	
+	td:nth-of-type(1){width: 100px}
+	td:nth-of-type(2){width: 380px; text-align: left;}
+	td:nth-of-type(3){width: 110px}
+	td:nth-of-type(4){width: 110px}
+	td:nth-of-type(5){width: 100px}
+	
+	tr:first-child>td{text-align: center;}
+	
+	/*scss문법적용
+	https://www.jsdelivr.com/package/npm/browser-scss
+	*/
+	tr:first-child{
+	background-color: black;
+	color:white;
+	font-weight: bold;
+	td{
+	border-color: pink;
+	 }
+	}
+	
+	tr:nth-child(2) > td{
+	text-align: right;}
 }
-
-tr:nth-child(2) > td{
-text-align: right;}
-
 </style>
 </head>
 <body>
   <main>
+    <%@include file="/WEB-INF/include/menus.jsp"%>
     <h2>게시물 목록</h2>
-    <table>
+    <table id="table">
       <tr>
         <td>번호</td>
         <td>제목</td>
