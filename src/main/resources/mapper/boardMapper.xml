@@ -13,6 +13,18 @@
  ORDER BY BNO DESC
   </select>
   
+  <select id="getBoard">
+  SELECT  BNO,
+          MENU_ID,
+		  TITLE,
+		  WRITER,
+		  CONTENT,
+		  TO_CHAR(REGDATE,'YYYY-MM-DD')REGDATE,
+		  HIT
+  FROM    BOARD
+  WHERE   BNO = #{bno}
+  </select>
+  
   <insert id="insertBoard">
   INSERT INTO BOARD(
     BNO,
@@ -28,6 +40,6 @@
      #{content},
      #{writer}
   )
-  
   </insert>
+  
 </mapper>
