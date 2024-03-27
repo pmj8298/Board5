@@ -85,13 +85,56 @@ public class BoardController {
 		// 메뉴목록 조회
 		List<MenuVo> menuList = menuMapper.getMenuList();
 		
+		// 조회수 증가(현재 bno의 HIT = HIT + 1)
+		boardMapper.incHit(boardVo);
+		
 		// bno로 조회한 게시글 정보
 		BoardVo vo = boardMapper.getBoard(boardVo);
+		
+		//vo.content 안의 \n 을 '<br>'로 변경한다
+		String content = vo.getContent();
+		if(content != null) {
+		content =content.replace("\n", "<br>");
+		vo.setContent(content);
+		}
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("menuList", menuList);
 		mv.addObject("vo", vo);
 		mv.setViewName("board/view");
 		return mv;
+	}
+	
+	
+	@RequestMapping("/UpdateForm")
+	public ModelAndView updateForm(BoardVo boardVo) {
+		
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("board/update");
+		return mv;
+	}
+	
+	@RequestMapping("/Update")
+	public ModelAndView update(BoardVo boardVo) {
+		boardMapper.updateBoard(boardVo);
+		
+		String menu_id = boardVo.getMenu_id();
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:/Board/List?menu_id=" + menu_id);
+		return mv;
+	}
+	
+	@RequestMapping("/Delete")
+	public ModelAndView delete(BoardVo boardVo) {
+	
+	boardMapper.deleteBoard(boardVo);
+		
+	String menu_id = boardVo.getMenu_id();
+		
+	ModelAndView mv = new ModelAndView();
+	mv.setViewName("redirect:/Board/List?menu_id=" + menu_id);
+	return mv;
 	}
 }

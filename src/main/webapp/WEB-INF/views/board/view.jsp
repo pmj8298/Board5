@@ -10,13 +10,10 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/common.css" />
 <style>
-
-
- #table {      
-      width: 800px;      
-   }
    
    #table {
+      width: 800px;      
+   	  margin-bottom: 200px;
      td {
       text-align :center;
       padding :10px;
@@ -32,9 +29,13 @@
       }
       &:nth-of-type(4) { width : 200px;  }    
      }
+     tr:nth-of-type(3) td:nth-of-type(2){
+     text-align: right;}
     tr:nth-of-type(4) td[colspan] {
            height : 250px;
-           width  : 600px;   
+           width  : 600px; 
+           text-align: left;
+           vertical-align: baseline;  
     }
     tr:last-child td {
            background-color : white;
@@ -89,6 +90,8 @@
      href="/Board/Delete?bno=${vo.bno}&menu_id=${vo.menu_id}">삭제</a>&nbsp;&nbsp;
      <a class="btn btn-secondary btn-sm" role="button" 
      href="/Board/List?menu_id=${vo.menu_id}">게시글목록</a>&nbsp;&nbsp;
+      <a class = "btn btn-info btn-sm" 
+          href  = "javascript:history.back()">이전으로</a>&nbsp;&nbsp;
      <a class="btn btn-success btn-sm" role="button" 
      href="/">Home</a>
      </td>

@@ -19,11 +19,17 @@
 		  TITLE,
 		  WRITER,
 		  CONTENT,
-		  TO_CHAR(REGDATE,'YYYY-MM-DD')REGDATE,
+		  TO_CHAR(REGDATE,'YYYY-MM-DD HH24:MI:SS')REGDATE,
 		  HIT
   FROM    BOARD
   WHERE   BNO = #{bno}
   </select>
+  
+  <update id="incHit">
+  UPDATE  BOARD
+     SET  HIT = HIT + 1
+    WHERE BNO = #{bno}
+  </update>
   
   <insert id="insertBoard">
   INSERT INTO BOARD(
@@ -41,5 +47,19 @@
      #{writer}
   )
   </insert>
+  
+  <update id="updateBoard">
+  UPDATE  BOARD
+     SET  BNO     = (SELECT NVL(MAX(BNO),0)+1 FROM BOARD),
+	      TITLE   = #{title},
+	      CONTENT = #{content},
+	      WRITER  = #{writer}
+	WHERE MENU_ID = #{menu_id}
+  </update>
+  
+  <delete id="deleteBoard">
+  DELETE FROM BOARD
+   WHERE BNO = #{bno}
+  </delete>
   
 </mapper>
