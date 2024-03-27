@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="icon" type="image/ico" href="/img/favicon.ico" />
 <link rel="stylesheet" href="/css/common.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <style>
 input:not(input[type=submit]){width:100%;}
 input[type=submit]{width:100px;}
@@ -21,9 +21,6 @@ input[type=submit]{width:100px;}
  td:nth-of-type(1) {
 	width: 200px;
 }
- td:nth-of-type(2) {
-	text-align: left;
-}
 
 td:not([colspan]):first-child {
 	background: black;
@@ -32,50 +29,53 @@ td:not([colspan]):first-child {
 }
 input[readonly]{
 background-color: #D0D0D0;}
+
+textarea{
+  height: 300px; 
+  width: 100%;
+}
+
 </style>
+<script src="https://cdn.jsdelivr.net/npm/browser-scss@1.0.3/dist/browser-scss.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
  <main>
  <%@include file="/WEB-INF/include/menus.jsp" %>
-   <h2>글 정보</h2>
+   <h2>게시글 내용 조회</h2>
     <table>
      <tr>
-     <td>제목</td>
-     <td>${ vo.title }</td>
+	     <td>글번호</td>
+	     <td>${ vo.bno }</td>
+	     <td>조회수</td>
+	     <td>${ vo.hit }</td>
      </tr>
      <tr>
-     <td>작성자</td>
-     <td>${ vo.writer }</td>
+	     <td>작성자</td>
+	     <td>${ vo.writer }</td>
+	     <td>작성일</td>
+	     <td>${ vo.regdate }</td>
      </tr>
      <tr>
-     <td>작성일</td>
-     <td>${ vo.regdate }</td>
+	     <td>제목</td>
+     	 <td colspan="3">${ vo.title }</td>
      </tr>
      <tr>
-     <td>조회수</td>
-     <td>
-     <c:choose>
-       <c:when test="${vo.hit ne 0}">
-       ${vo['hit'] }
-       </c:when>
-       <c:otherwise>
-       <span style="color:red">없음</span>
-       </c:otherwise>
-     </c:choose>
-     </td>
-     </tr>
-     <tr>
-     <td>내용</td>
-     <td>${ vo.content }</td>
+	     <td>내용</td>
+	     <td colspan="3">${ vo.content }</td>
      </tr>
      
      <tr>
-     <td colspan="2">
-     <a class="btn btn-primary btn-sm" role="button" 
-     href="/Board/List">게시글목록</a>
-     
-   
-     <a class="btn btn-primary btn-sm" role="button" 
+     <td colspan="4">
+     <a class="btn btn-info btn-sm" 
+     href="/Board/WriteForm?menu_id=${vo.menu_id}">새 글쓰기</a>&nbsp;&nbsp;
+     <a class="btn btn-warning btn-sm" 
+     href="/Board/UpdateForm?bno=${vo.bno}&menu_id=${vo.menu_id}">수정</a>&nbsp;&nbsp;
+     <a class="btn btn-danger btn-sm" 
+     href="/Board/Delete?bno=${vo.bno}&menu_id=${vo.menu_id}">삭제</a>&nbsp;&nbsp;
+     <a class="btn btn-secondary btn-sm" role="button" 
+     href="/Board/List?menu_id=${vo.menu_id}">게시글목록</a>&nbsp;&nbsp;
+     <a class="btn btn-success btn-sm" role="button" 
      href="/">Home</a>
      </td>
      </tr>

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <link rel="icon" type="image/ico" href="/img/favicon.ico" />
 <link rel="stylesheet" href="/css/common.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <style>
 input:not(input[type=submit]){width:100%;}
 input[type=submit]{width:100px;}
@@ -34,6 +35,8 @@ textarea{
 }
 
 </style>
+<script src="https://cdn.jsdelivr.net/npm/browser-scss@1.0.3/dist/browser-scss.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
  <main>
