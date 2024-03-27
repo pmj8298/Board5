@@ -37,31 +37,41 @@ public class BoardController {
 		List<BoardVo> boardList = boardMapper.getBoardList(menuVo); 
 		System.out.println(boardList);
 		
+		String menu_id = menuVo.getMenu_id();
+		
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu_id", menu_id);
 		mv.addObject("menuList", menuList);
 		mv.addObject("boardList", boardList);
-		mv.setViewName("/board/list");
+		mv.setViewName("board/list");
 		return mv;
 	}
 	
-		// /Board/WriteForm
+		// /Board/WriteForm?menu_id=MENU01
 	@RequestMapping("/WriteForm")
-	public ModelAndView writeForm() {
+	public ModelAndView writeForm(MenuVo menuVo) {
+		
+		String menu_id = menuVo.getMenu_id();
 		
 		
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menu_id", menu_id);
 		mv.setViewName("board/write");
 		return mv;
 	}
 	
+	// /Board/Write
 	@RequestMapping("/Write")
-	public ModelAndView write(MenuVo menuVo) {
+	public ModelAndView write(BoardVo boardVo) {
 		
+		// 넘어온 값 Board 에 저장
+
+		boardMapper.insertBoard(boardVo);
 		
-		boardMapper.insertBoard(menuVo);
+		String menu_id = boardVo.getMenu_id();
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/Board/List");
+		mv.setViewName("redirect:/Board/List?menu_id=" + menu_id);
 		return mv;
 	}
 }

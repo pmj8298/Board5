@@ -57,7 +57,7 @@
       
       <tr>
         <td colspan="5">
-        [<a href="/Board/WriteForm">새 글 추가</a>]
+        [<a href="/Board/WriteForm?menu_id=${menu_id}">새 글 추가</a>]
         </td>
       </tr>
       
