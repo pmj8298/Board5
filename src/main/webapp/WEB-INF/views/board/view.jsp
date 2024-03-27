@@ -7,32 +7,46 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="icon" type="image/ico" href="/img/favicon.ico" />
-<link rel="stylesheet" href="/css/common.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/common.css" />
 <style>
-input:not(input[type=submit]){width:100%;}
-input[type=submit]{width:100px;}
-#goList{width:100px;}
 
- td{padding: 10px; 
- width: 700px;
- text-align: center;}
- 
- td:nth-of-type(1) {
-	width: 200px;
-}
 
-td:not([colspan]):first-child {
-	background: black;
-	color: white;
-	font-weight: bold; 
-}
-input[readonly]{
-background-color: #D0D0D0;}
-
-textarea{
-  height: 300px; 
-  width: 100%;
+ #table {      
+      width: 800px;      
+   }
+   
+   #table {
+     td {
+      text-align :center;
+      padding :10px;
+      
+      &:nth-of-type(1) { width : 200px; 
+          background-color : black;
+          color            : white; 
+      }
+      &:nth-of-type(2) { width : 200px;  }
+      &:nth-of-type(3) { width : 200px; 
+          background-color : black;
+          color            : white;
+      }
+      &:nth-of-type(4) { width : 200px;  }    
+     }
+    tr:nth-of-type(4) td[colspan] {
+           height : 250px;
+           width  : 600px;   
+    }
+    tr:last-child td {
+           background-color : white;
+           color            : black;   
+    }
+   }
+   
+      
+   textarea  {
+      height: 250px;
+      width : 100%;
+   }
 }
 
 </style>
@@ -43,7 +57,7 @@ textarea{
  <main>
  <%@include file="/WEB-INF/include/menus.jsp" %>
    <h2>게시글 내용 조회</h2>
-    <table>
+    <table id="table">
      <tr>
 	     <td>글번호</td>
 	     <td>${ vo.bno }</td>
