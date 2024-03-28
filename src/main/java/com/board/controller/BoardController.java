@@ -87,7 +87,7 @@ public class BoardController {
 	@RequestMapping("/View")
 	//public ModelAndView view(int bno) { -이거도 가능
 	public ModelAndView view(BoardVo boardVo) {
-		// 메뉴목록 조회
+		// 메뉴목록 조회(menus.jsp용)
 		List<MenuVo> menuList = menuMapper.getMenuList();
 		
 		// 조회수 증가(현재 bno의 HIT = HIT + 1)
@@ -131,6 +131,7 @@ public class BoardController {
 		return mv;
 	}
 	
+	// /Board/Delete?bno=3&menu_id=1
 	@RequestMapping("/Delete")
 	public ModelAndView delete(BoardVo boardVo) {
 	

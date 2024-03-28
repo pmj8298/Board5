@@ -45,14 +45,11 @@ textarea{
    
    <h2>게시글 등록</h2>
    <form action="/Board/Write" method="POST">
+   <input type="hidden" name="menu_id" value="${menu_id}"/>
     <table>
      <tr>
      <td>제목</td>
      <td><input type="text" name="title" /></td>
-     </tr>
-     <tr>
-     <td>메뉴</td>
-     <td><input type="text" name="menu_id" value="${menu_id}"/></td>
      </tr>
      <tr>
      <td>작성자</td>
