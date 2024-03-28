@@ -37,10 +37,14 @@ public class BoardController {
 		List<BoardVo> boardList = boardMapper.getBoardList(menuVo); 
 		System.out.println(boardList);
 		
-		String menu_id = menuVo.getMenu_id();
+		MenuVo mVo = menuMapper.getMenu(menuVo.getMenu_id());
+		
+		String menu_id = mVo.getMenu_id();
+		String menu_name = mVo.getMenu_name();
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("menu_id", menu_id);
+		mv.addObject("menu_name", menu_name);
 		mv.addObject("menuList", menuList);
 		mv.addObject("boardList", boardList);
 		mv.setViewName("board/list");
@@ -81,6 +85,7 @@ public class BoardController {
 	
 	// /Board/View?bno=1
 	@RequestMapping("/View")
+	//public ModelAndView view(int bno) { -이거도 가능
 	public ModelAndView view(BoardVo boardVo) {
 		// 메뉴목록 조회
 		List<MenuVo> menuList = menuMapper.getMenuList();
