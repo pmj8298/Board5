@@ -114,10 +114,12 @@ public class BoardController {
 	@RequestMapping("/UpdateForm")
 	public ModelAndView updateForm(BoardVo boardVo) {
 		//public ModelAndView updateForm(int bno, String menu_id) {
+		List<MenuVo> menuList = menuMapper.getMenuList(); // 이거랑
 		
 		BoardVo vo = boardMapper.getBoard(boardVo);
 		
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("menuList", menuList); // 이게 있어야 menus.jsp가 보임
 		mv.addObject("vo",vo);
 		mv.setViewName("board/update"); // update.jsp
 		return mv;
