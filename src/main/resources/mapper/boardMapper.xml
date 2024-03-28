@@ -50,11 +50,9 @@
   
   <update id="updateBoard">
   UPDATE  BOARD
-     SET  BNO     = (SELECT NVL(MAX(BNO),0)+1 FROM BOARD),
-	      TITLE   = #{title},
-	      CONTENT = #{content},
-	      WRITER  = #{writer}
-	WHERE MENU_ID = #{menu_id}
+     SET  TITLE   = #{title},
+	      CONTENT = #{content}
+	WHERE BNO = #{bno}
   </update>
   
   <delete id="deleteBoard">

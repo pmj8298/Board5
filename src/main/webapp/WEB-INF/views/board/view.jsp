@@ -30,7 +30,7 @@
       &:nth-of-type(4) { width : 200px;  }    
      }
      tr:nth-of-type(3) td:nth-of-type(2){
-     text-align: right;}
+     text-align: left;}
     tr:nth-of-type(4) td[colspan] {
            height : 250px;
            width  : 600px; 

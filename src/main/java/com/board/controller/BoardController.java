@@ -113,15 +113,19 @@ public class BoardController {
 	
 	@RequestMapping("/UpdateForm")
 	public ModelAndView updateForm(BoardVo boardVo) {
+		//public ModelAndView updateForm(int bno, String menu_id) {
 		
+		BoardVo vo = boardMapper.getBoard(boardVo);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("board/update");
+		mv.addObject("vo",vo);
+		mv.setViewName("board/update"); // update.jsp
 		return mv;
 	}
 	
 	@RequestMapping("/Update")
 	public ModelAndView update(BoardVo boardVo) {
+		
 		boardMapper.updateBoard(boardVo);
 		
 		String menu_id = boardVo.getMenu_id();
